@@ -188,6 +188,7 @@
         }
 
         .product-card {
+            display: block;
             background: white;
             border-radius: 16px;
             padding: 25px;
@@ -195,6 +196,8 @@
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border: none;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -345,58 +348,58 @@
         <h2 class="section-title">Our Slimes</h2>
         <div class="products-grid">
             <!-- Product 1 -->
-            <div class="product-card">
+            <a href="product.html?id=glitter" class="product-card">
                 <div class="product-emoji">💜</div>
                 <div class="product-name">Glitter Galaxy</div>
                 <p class="product-desc">Sparkly purple slime with holographic glitter</p>
                 <div class="product-price">$6.99</div>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+                <button class="add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart! 🛒');">Add to Cart</button>
+            </a>
 
             <!-- Product 2 -->
-            <div class="product-card">
+            <a href="product.html?id=rainbow" class="product-card">
                 <div class="product-emoji">🌈</div>
                 <div class="product-name">Rainbow Swirl</div>
                 <p class="product-desc">Colorful stretchy slime with layered colors</p>
                 <div class="product-price">$7.99</div>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+                <button class="add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart! 🛒');">Add to Cart</button>
+            </a>
 
             <!-- Product 3 -->
-            <div class="product-card">
+            <a href="product.html?id=putty" class="product-card">
                 <div class="product-emoji">💚</div>
                 <div class="product-name">Slime Putty</div>
                 <p class="product-desc">Cloud-like slime that's super soft and squishy</p>
                 <div class="product-price">$5.99</div>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+                <button class="add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart! 🛒');">Add to Cart</button>
+            </a>
 
             <!-- Product 4 -->
-            <div class="product-card">
+            <a href="product.html?id=fluffy" class="product-card">
                 <div class="product-emoji">🌸</div>
                 <div class="product-name">Fluffy Cloud</div>
                 <p class="product-desc">Extra fluffy slime in pastel pink</p>
                 <div class="product-price">$7.99</div>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+                <button class="add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart! 🛒');">Add to Cart</button>
+            </a>
 
             <!-- Product 5 -->
-            <div class="product-card">
+            <a href="product.html?id=ocean" class="product-card">
                 <div class="product-emoji">🌊</div>
                 <div class="product-name">Ocean Wave</div>
                 <p class="product-desc">Blue jelly slime with shimmer beads</p>
                 <div class="product-price">$6.99</div>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+                <button class="add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart! 🛒');">Add to Cart</button>
+            </a>
 
             <!-- Product 6 -->
-            <div class="product-card">
+            <a href="product.html?id=star" class="product-card">
                 <div class="product-emoji">⭐</div>
                 <div class="product-name">Star Jelly</div>
                 <p class="product-desc">Transparent jelly slime with star-shaped beads</p>
                 <div class="product-price">$6.99</div>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+                <button class="add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart! 🛒');">Add to Cart</button>
+            </a>
         </div>
     </section>
 
@@ -419,14 +422,7 @@
     </footer>
 
     <script>
-        // Simple add to cart functionality
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                alert('Added to cart! 🛒 This is a demo - set up payment later!');
-            });
-        });
-
-        // Smooth scrolling
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();

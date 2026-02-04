@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Lizzy & AJ's Slime House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #ffd4e5 0%, #ffe5cc 25%, #fff4e0 50%, #e0f7ff 75%, #f0e5ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: 0.3px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF69B4, #FFD700, #00CED1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Righteous', sans-serif;
+            text-decoration: none;
+        }
+
+        .emoji-logo {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 40px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 2px solid #333;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            font-family: 'Righteous', sans-serif;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-btn.primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-color: #FFD700;
+            color: white;
+        }
+
+        /* Back Button */
+        .back-section {
+            padding: 20px 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #FF1493;
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 20px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            padding: 40px;
+        }
+
+        /* Product Image */
+        .product-image-area {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f0e5ff, #e0f7ff);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #FF69B4;
+            transform: scale(1.05);
+        }
+
+        /* Product Info */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .product-title {
+            font-size: 42px;
+            color: #333;
+            font-family: 'Righteous', sans-serif;
+            line-height: 1.2;
+        }
+
+        .product-price {
+            font-size: 36px;
+            color: #FF1493;
+            font-weight: 700;
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Product Details */
+        .product-details {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .details-title {
+            font-size: 18px;
+            font-family: 'Righteous', sans-serif;
+            color: #00CED1;
+            margin-bottom: 16px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Variant Selector */
+        .variant-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .variant-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .variant-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .variant-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .variant-btn:hover {
+            border-color: #FF69B4;
+        }
+
+        .variant-btn.active {
+            border-color: #FF1493;
+            background: linear-gradient(135deg, #ffd4e5, #ffe5cc);
+        }
+
+        /* Quantity */
+        .quantity-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #eee;
+        }
+
+        .qty-btn {
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .qty-value {
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            outline: none;
+        }
+
+        /* Add to Cart */
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Righteous', sans-serif;
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
+        }
+
+        /* Related Products */
+        .related-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #00CED1;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Righteous', sans-serif;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .related-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .related-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .related-emoji {
+            font-size: 60px;
+            margin: 15px 0;
+        }
+
+        .related-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            font-family: 'Righteous', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .related-price {
+            font-size: 18px;
+            color: #FF1493;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 24px;
+            }
+
+            .product-section {
+                padding: 20px;
+            }
+
+            .product-title {
+                font-size: 32px;
+            }
+
+            .main-image {
+                font-size: 100px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+
+            .back-section {
+                padding: 15px 20px;
+            }
+
+            .related-section {
+                padding: 40px 20px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <span class="emoji-logo">🌈</span>Lizzy & AJ's Slime House
+        </a>
+        <nav>
+            <a href="index.html#shop" class="nav-btn">SHOP</a>
+            <a href="index.html#about" class="nav-btn">ABOUT US</a>
+            <a href="index.html#contact" class="nav-btn">CONTACT</a>
+            <a href="#" class="nav-btn primary">CART (0)</a>
+        </nav>
+    </header>
+
+    <!-- Back Button -->
+    <div class="back-section">
+        <a href="index.html#shop" class="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Shop
+        </a>
+    </div>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="product-container">
+            <!-- Product Image -->
+            <div class="product-image-area">
+                <div class="main-image" id="mainImage">💜</div>
+                <div class="image-thumbnails">
+                    <div class="thumbnail active" data-view="front">💜</div>
+                    <div class="thumbnail" data-view="stretch">🤏</div>
+                    <div class="thumbnail" data-view="texture">✨</div>
+                    <div class="thumbnail" data-view="container">🫙</div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <span class="product-badge" id="productBadge">Best Seller</span>
+                <h1 class="product-title" id="productName">Glitter Galaxy</h1>
+                <div class="product-price" id="productPrice">$6.99</div>
+                <p class="product-description" id="productDescription">
+                    Get lost in the sparkly universe with our Glitter Galaxy slime! This gorgeous purple slime is loaded with holographic glitter that shimmers and shines from every angle. Super stretchy and satisfying to play with - perfect for stress relief or just having fun!
+                </p>
+
+                <!-- Product Details -->
+                <div class="product-details">
+                    <h3 class="details-title">Slime Details</h3>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Slime Type</span>
+                            <span class="detail-value" id="detailType">Clear Slime</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Texture</span>
+                            <span class="detail-value" id="detailTexture">Stretchy & Glossy</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Scent</span>
+                            <span class="detail-value" id="detailScent">Grape Candy</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Size</span>
+                            <span class="detail-value" id="detailSize">4 oz container</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Size Variant -->
+                <div class="variant-section">
+                    <span class="variant-label">Size</span>
+                    <div class="variant-options" id="sizeOptions">
+                        <button class="variant-btn active" data-size="small" data-price="6.99">4 oz - $6.99</button>
+                        <button class="variant-btn" data-size="medium" data-price="9.99">6 oz - $9.99</button>
+                        <button class="variant-btn" data-size="large" data-price="12.99">8 oz - $12.99</button>
+                    </div>
+                </div>
+
+                <!-- Quantity -->
+                <div class="quantity-section">
+                    <span class="variant-label">Quantity</span>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" id="qtyMinus">−</button>
+                        <input type="text" class="qty-value" id="qtyValue" value="1" readonly>
+                        <button class="qty-btn" id="qtyPlus">+</button>
+                    </div>
+                </div>
+
+                <!-- Add to Cart -->
+                <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-section">
+        <h2 class="section-title">You Might Also Love</h2>
+        <div class="related-grid" id="relatedProducts">
+            <a href="product.html?id=rainbow" class="related-card" data-product="rainbow">
+                <div class="related-emoji">🌈</div>
+                <div class="related-name">Rainbow Swirl</div>
+                <div class="related-price">$7.99</div>
+            </a>
+            <a href="product.html?id=fluffy" class="related-card" data-product="fluffy">
+                <div class="related-emoji">🌸</div>
+                <div class="related-name">Fluffy Cloud</div>
+                <div class="related-price">$7.99</div>
+            </a>
+            <a href="product.html?id=ocean" class="related-card" data-product="ocean">
+                <div class="related-emoji">🌊</div>
+                <div class="related-name">Ocean Wave</div>
+                <div class="related-price">$6.99</div>
+            </a>
+            <a href="product.html?id=star" class="related-card" data-product="star">
+                <div class="related-emoji">⭐</div>
+                <div class="related-name">Star Jelly</div>
+                <div class="related-price">$6.99</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Lizzy & AJ's Slime House. All rights reserved.</p>
+        <p>Made with 💜 in SLC, UT for kids who love to have fun!</p>
+    </footer>
+
+    <script>
+        // Product data
+        const products = {
+            glitter: {
+                name: 'Glitter Galaxy',
+                emoji: '💜',
+                price: 6.99,
+                badge: 'Best Seller',
+                description: 'Get lost in the sparkly universe with our Glitter Galaxy slime! This gorgeous purple slime is loaded with holographic glitter that shimmers and shines from every angle. Super stretchy and satisfying to play with - perfect for stress relief or just having fun!',
+                type: 'Clear Slime',
+                texture: 'Stretchy & Glossy',
+                scent: 'Grape Candy',
+                size: '4 oz container'
+            },
+            rainbow: {
+                name: 'Rainbow Swirl',
+                emoji: '🌈',
+                price: 7.99,
+                badge: 'Fan Favorite',
+                description: 'A magical swirl of all your favorite colors! Our Rainbow Swirl slime features beautiful layered colors that blend together as you stretch and squish. Each pull reveals new color combinations - it\'s like having a rainbow in your hands!',
+                type: 'Butter Slime',
+                texture: 'Smooth & Spreadable',
+                scent: 'Fruit Punch',
+                size: '4 oz container'
+            },
+            putty: {
+                name: 'Slime Putty',
+                emoji: '💚',
+                price: 5.99,
+                badge: 'Great Value',
+                description: 'Our classic Slime Putty is soft, squishy, and oh-so-satisfying! This cloud-like slime has the perfect texture for molding and shaping. Great for beginners and slime lovers alike!',
+                type: 'Cloud Slime',
+                texture: 'Soft & Fluffy',
+                scent: 'Green Apple',
+                size: '4 oz container'
+            },
+            fluffy: {
+                name: 'Fluffy Cloud',
+                emoji: '🌸',
+                price: 7.99,
+                badge: 'Super Soft',
+                description: 'Float on cloud nine with our Fluffy Cloud slime! This extra-fluffy pink slime feels like you\'re squishing actual clouds. Light, airy, and incredibly satisfying - you won\'t be able to put it down!',
+                type: 'Fluffy Slime',
+                texture: 'Light & Airy',
+                scent: 'Cotton Candy',
+                size: '4 oz container'
+            },
+            ocean: {
+                name: 'Ocean Wave',
+                emoji: '🌊',
+                price: 6.99,
+                badge: 'New Arrival',
+                description: 'Dive into the deep blue with our Ocean Wave slime! This beautiful blue jelly slime sparkles with shimmer beads that look like ocean bubbles. Watch the waves flow as you stretch and play!',
+                type: 'Jelly Slime',
+                texture: 'Jiggly & Clear',
+                scent: 'Ocean Breeze',
+                size: '4 oz container'
+            },
+            star: {
+                name: 'Star Jelly',
+                emoji: '⭐',
+                price: 6.99,
+                badge: 'Limited Edition',
+                description: 'Reach for the stars with our Star Jelly slime! This crystal-clear jelly slime is filled with adorable star-shaped beads that make every stretch magical. Perfect for anyone who loves all things sparkly!',
+                type: 'Clear Jelly Slime',
+                texture: 'Jiggly & Stretchy',
+                scent: 'Starburst',
+                size: '4 oz container'
+            }
+        };
+
+        // Get product ID from URL
+        function getProductId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('id') || 'glitter';
+        }
+
+        // Load product data
+        function loadProduct(productId) {
+            const product = products[productId] || products.glitter;
+
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('mainImage').textContent = product.emoji;
+            document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('productBadge').textContent = product.badge;
+            document.getElementById('productDescription').textContent = product.description;
+            document.getElementById('detailType').textContent = product.type;
+            document.getElementById('detailTexture').textContent = product.texture;
+            document.getElementById('detailScent').textContent = product.scent;
+            document.getElementById('detailSize').textContent = product.size;
+
+            // Update thumbnails
+            document.querySelectorAll('.thumbnail')[0].textContent = product.emoji;
+
+            // Update page title
+            document.title = `${product.name} - Lizzy & AJ's Slime House`;
+
+            // Update related products (exclude current)
+            updateRelatedProducts(productId);
+        }
+
+        // Update related products
+        function updateRelatedProducts(currentId) {
+            const relatedGrid = document.getElementById('relatedProducts');
+            const productKeys = Object.keys(products).filter(key => key !== currentId);
+            const shuffled = productKeys.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+            relatedGrid.innerHTML = shuffled.map(key => {
+                const p = products[key];
+                return `
+                    <a href="product.html?id=${key}" class="related-card" data-product="${key}">
+                        <div class="related-emoji">${p.emoji}</div>
+                        <div class="related-name">${p.name}</div>
+                        <div class="related-price">$${p.price.toFixed(2)}</div>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // Thumbnail click
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Size variant selection
+        document.getElementById('sizeOptions').addEventListener('click', function(e) {
+            if (e.target.classList.contains('variant-btn')) {
+                document.querySelectorAll('.variant-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                const price = e.target.dataset.price;
+                document.getElementById('productPrice').textContent = `$${parseFloat(price).toFixed(2)}`;
+            }
+        });
+
+        // Quantity controls
+        let quantity = 1;
+        document.getElementById('qtyMinus').addEventListener('click', function() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('qtyValue').value = quantity;
+            }
+        });
+
+        document.getElementById('qtyPlus').addEventListener('click', function() {
+            if (quantity < 10) {
+                quantity++;
+                document.getElementById('qtyValue').value = quantity;
+            }
+        });
+
+        // Add to cart
+        document.getElementById('addToCartBtn').addEventListener('click', function() {
+            const productName = document.getElementById('productName').textContent;
+            const price = document.getElementById('productPrice').textContent;
+            const size = document.querySelector('.variant-btn.active').textContent.split(' - ')[0];
+            alert(`Added to cart! 🛒\n\n${quantity}x ${productName} (${size})\nTotal: ${price} each\n\nThis is a demo - payment coming soon!`);
+        });
+
+        // Load product on page load
+        loadProduct(getProductId());
+    </script>
+</body>
+</html>
